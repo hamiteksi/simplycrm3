@@ -12,7 +12,7 @@ class Communication(models.Model):
     ]
     
     customer = models.ForeignKey('Customer', on_delete=models.CASCADE, related_name='communications')
-    type = models.CharField(max_length=20, choices=COMMUNICATION_TYPES)
+    type = models.CharField(max_length=200, choices=COMMUNICATION_TYPES)
     description = models.TextField()
     date = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -27,34 +27,34 @@ class Communication(models.Model):
         ordering = ['-date']
 
 class Customer(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100, blank=True, null=True)
-    phone = models.CharField(max_length=20, blank=True, null=True)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200, blank=True, null=True)
+    phone = models.CharField(max_length=200, blank=True, null=True)
     address = models.TextField(blank=True, null=True)
     customer_notes = models.TextField(blank=True, null=True)
-    father_name = models.CharField(max_length=100, blank=True, null=True)
-    mother_name = models.CharField(max_length=100, blank=True, null=True)
-    job = models.CharField(max_length=100, blank=True, null=True)
-    company = models.CharField(max_length=100, blank=True, null=True)
-    income = models.CharField(max_length=100, blank=True, null=True)
-    income_source = models.CharField(max_length=100, blank=True, null=True)
-    insurance_type = models.CharField(max_length=100, blank=True, null=True)
-    gender = models.CharField(max_length=100, blank=True, null=True)
-    appointment_place = models.CharField(max_length=100, blank=True, null=True)
+    father_name = models.CharField(max_length=200, blank=True, null=True)
+    mother_name = models.CharField(max_length=200, blank=True, null=True)
+    job = models.CharField(max_length=200, blank=True, null=True)
+    company = models.CharField(max_length=200, blank=True, null=True)
+    income = models.CharField(max_length=200, blank=True, null=True)
+    income_source = models.CharField(max_length=200, blank=True, null=True)
+    insurance_type = models.CharField(max_length=200, blank=True, null=True)
+    gender = models.CharField(max_length=200, blank=True, null=True)
+    appointment_place = models.CharField(max_length=200, blank=True, null=True)
     
     # Kimlik bilgileri
-    identity_number = models.CharField(max_length=20, blank=True, null=True)
-    nationality = models.CharField(max_length=100, blank=True, null=True)
+    identity_number = models.CharField(max_length=200, blank=True, null=True)
+    nationality = models.CharField(max_length=200, blank=True, null=True)
     date_of_birth = models.DateField(null=True, blank=True)
-    marital_status = models.CharField(max_length=20, blank=True, null=True)
+    marital_status = models.CharField(max_length=200, blank=True, null=True)
     
     # Pasaport bilgileri
-    passport_number = models.CharField(max_length=20, blank=True, null=True)
-    issuing_authority = models.CharField(max_length=100, blank=True, null=True)
-    passport_date = models.CharField(max_length=100, blank=True, null=True)
+    passport_number = models.CharField(max_length=200, blank=True, null=True)
+    issuing_authority = models.CharField(max_length=200, blank=True, null=True)
+    passport_date = models.CharField(max_length=200, blank=True, null=True)
     passport_info = models.TextField(blank=True, null=True)
-    passport_type = models.CharField(max_length=100, blank=True, null=True)
+    passport_type = models.CharField(max_length=200, blank=True, null=True)
     
     # Başvuru bilgileri
     application_type = models.CharField(max_length=200, blank=True, null=True)
@@ -62,8 +62,8 @@ class Customer(models.Model):
     residence_permit_start_date = models.DateField(null=True, blank=True)
     residence_permit_end_date = models.DateField(null=True, blank=True)
     service_type = models.CharField(max_length=200, blank=True, null=True)
-    ptt_code = models.CharField(max_length=100, blank=True, null=True)
-    application_number = models.CharField(max_length=100, blank=True, null=True)
+    ptt_code = models.CharField(max_length=200, blank=True, null=True)
+    application_number = models.CharField(max_length=200, blank=True, null=True)
     application_date = models.DateField(
         verbose_name='Başvuru Tarihi',
         null=True,  # Eski kayıtlar için null izin ver
@@ -85,7 +85,7 @@ class Customer(models.Model):
         ('PENDING', 'Beklemede'),
         ('COMPLETED', 'Tamamlandı'),
     ]
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='ACTIVE')
+    status = models.CharField(max_length=200, choices=STATUS_CHOICES, default='ACTIVE')
     
     # Zaman damgaları
     created_at = models.DateTimeField(auto_now_add=True)
@@ -137,7 +137,7 @@ class Expense(models.Model):
     COUNTRY_CHOICES = [('TR', 'Turkey'), ('US', 'USA'), ('UK', 'United Kingdom')]  # Just an example
 
     age = models.PositiveIntegerField(choices=AGE_CHOICES)
-    country = models.CharField(max_length=2, choices=COUNTRY_CHOICES)
+    country = models.CharField(max_length=200, choices=COUNTRY_CHOICES)
     contract_fee = models.BooleanField(default=False)
     population_fee = models.BooleanField(default=False)
     card_fee = models.BooleanField(default=False)
