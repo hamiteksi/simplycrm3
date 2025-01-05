@@ -61,7 +61,7 @@ class Customer(models.Model):
     residence_type = models.CharField(max_length=200, blank=True, null=True)
     residence_permit_start_date = models.DateField(null=True, blank=True)
     residence_permit_end_date = models.DateField(null=True, blank=True)
-    service_type = models.CharField(max_length=50, blank=True, null=True)
+    service_type = models.CharField(max_length=200, blank=True, null=True)
     ptt_code = models.CharField(max_length=100, blank=True, null=True)
     application_number = models.CharField(max_length=100, blank=True, null=True)
     application_date = models.DateField(
